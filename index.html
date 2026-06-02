@@ -13,10 +13,10 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --g: #1D9E75;
-      --g2: #0F6E56;
-      --g-soft: rgba(29,158,117,0.08);
-      --g-border: rgba(29,158,117,0.2);
+      --g: #52DD12;
+      --g2: #3CB50B;
+      --g-soft: rgba(82,221,18,0.10);
+      --g-border: rgba(82,221,18,0.28);
       --bg: #0d0d0d;
       --bg2: #111111;
       --bg3: #161616;
@@ -64,6 +64,17 @@
       text-decoration: none;
     }
     .logo em { font-style: normal; color: var(--g); }
+
+    .logo { display: inline-flex; align-items: center; gap: 10px; }
+    .logo-img { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; }
+    .hero-logo {
+      width: min(220px, 52vw);
+      height: auto;
+      display: block;
+      margin-bottom: 26px;
+      filter: drop-shadow(0 18px 35px rgba(29,158,117,0.28));
+      animation: fadeUp 0.6s ease both;
+    }
 
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
@@ -474,6 +485,76 @@
     .about-mini-l { font-size: 11px; color: var(--text2); }
     .about-mini.accent .about-mini-l { color: rgba(255,255,255,0.75); }
 
+
+    /* ── LEADERSHIP ── */
+    .leadership-section { background: var(--bg); padding: 88px 0; }
+    .leader-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 44px; }
+    .leader-card {
+      background: var(--card);
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .leader-card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
+    .leader-photo {
+      width: 92px;
+      height: 92px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(29,158,117,0.24), rgba(29,158,117,0.06));
+      border: 1px solid var(--g-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--g);
+      font-size: 26px;
+      font-weight: 700;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .leader-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .leader-name { font-size: 20px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 5px; }
+    .leader-role { color: var(--g); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 9px; }
+    .leader-desc { font-size: 13px; color: var(--text2); line-height: 1.65; }
+
+    /* ── CONTACT ── */
+    .contact-section { background: var(--bg2); padding: 88px 0; }
+    .contact-wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 18px; margin-top: 44px; }
+    .contact-card, .contact-form {
+      background: var(--card);
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .contact-line { display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-bottom: 0.5px solid var(--border); }
+    .contact-line:last-child { border-bottom: none; }
+    .contact-line i { color: var(--g); font-size: 20px; margin-top: 2px; }
+    .contact-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .contact-value, .contact-value a { color: var(--text); text-decoration: none; font-size: 14px; line-height: 1.5; }
+    .contact-value a:hover { color: var(--g); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group { margin-bottom: 12px; }
+    .form-group.full { grid-column: 1 / -1; }
+    label { display: block; font-size: 11px; color: var(--text2); margin-bottom: 7px; letter-spacing: 0.04em; }
+    input, textarea {
+      width: 100%;
+      background: #0b0b0b;
+      border: 0.5px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      padding: 13px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus { border-color: var(--g-border); }
+    textarea { min-height: 130px; resize: vertical; }
+    .form-note { font-size: 12px; color: var(--text2); line-height: 1.6; margin-top: 10px; }
+
     /* ── TESTIMONIALS ── */
     .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 48px; }
     .tc {
@@ -591,6 +672,9 @@
       .cases-grid { grid-template-columns: 1fr; }
       .about-inner { grid-template-columns: 1fr; gap: 40px; }
       .testi-grid { grid-template-columns: 1fr; }
+      .leader-grid { grid-template-columns: 1fr; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr 1fr; gap: 32px; }
       .steps::before { display: none; }
       .cta-inner { flex-direction: column; text-align: center; }
@@ -609,12 +693,13 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="logo">Grow<em>zio</em></a>
+    <a href="#" class="logo"><img src="growzio-logo-transparent.png" alt="Growzio logo" class="logo-img"><span>Grow<em>zio</em></span></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#testimonials">Clients</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Let's Talk <i class="ti ti-arrow-right"></i></a>
     <div class="hamburger" onclick="this.classList.toggle('open')" aria-label="Menu">
@@ -629,6 +714,7 @@
     <div class="hero-ring"></div>
     <div class="hero-ring2"></div>
     <div class="hero-inner w">
+      <img src="growzio-logo-transparent.png" alt="Growzio logo" class="hero-logo">
       <div class="eyebrow"><span class="dot-live"></span>Digital growth partner</div>
       <h1>We grow <em>startups</em>.<br><span class="dim">Faster.</span></h1>
       <p class="hero-sub">Data-driven marketing for founders who want real growth — not vanity metrics. SEO, paid ads, social, and brand strategy that actually moves the needle.</p>
@@ -810,7 +896,7 @@
         <div class="about-content reveal">
           <p class="sec-tag">About Growzio</p>
           <h2>We're not an agency.<br><span>We're your growth team.</span></h2>
-          <p>Founded by marketers who've been in the trenches with startups, Growzio was built to give founders access to the same calibre of marketing that enterprise brands use — without the enterprise price tag or the agency runaround.</p>
+          <p>Growzio combines technical execution, digital strategy, and operational discipline to help businesses grow online. Our team focuses on practical marketing systems, clear communication, and measurable business results.</p>
           <a href="#" class="bc-link" style="font-size:14px">Our story <i class="ti ti-arrow-right"></i></a>
         </div>
         <div class="about-visual reveal reveal-d1">
@@ -818,6 +904,33 @@
           <div class="about-mini"><div class="about-mini-n">5+</div><div class="about-mini-l">Years of experience</div></div>
           <div class="about-mini"><div class="about-mini-n">400+</div><div class="about-mini-l">Campaigns run</div></div>
           <div class="about-mini"><div class="about-mini-n">₹50Cr</div><div class="about-mini-l">Ad spend managed</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- LEADERSHIP -->
+  <section class="leadership-section" id="leadership">
+    <div class="w">
+      <p class="sec-tag reveal">Founder details</p>
+      <h2 class="sec-h reveal reveal-d1">Meet the <span>leadership team</span></h2>
+      <div class="leader-grid">
+        <div class="leader-card reveal">
+          <div class="leader-photo">S</div>
+          <div>
+            <div class="leader-name">Saravanan</div>
+            <div class="leader-role">Technical Director &amp; Sales &amp; Marketing</div>
+            <p class="leader-desc">Leads technical strategy, website systems, automation direction, and digital solution development for Growzio clients.</p>
+          </div>
+        </div>
+        <div class="leader-card reveal reveal-d1">
+          <div class="leader-photo">J</div>
+          <div>
+            <div class="leader-name">Javid</div>
+            <div class="leader-role">Director &amp; Design &amp; Development</div>
+            <p class="leader-desc">Leads operations, client coordination, service delivery, and project execution to keep every growth activity moving smoothly.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -858,9 +971,56 @@
       <div class="cta-inner">
         <div class="reveal">
           <div class="cta-h">Ready to grow<br>your startup?</div>
-          <div class="cta-sub">Book a free 30-min strategy call. No pitch, no pressure —<br>just a clear plan for your growth.</div>
+          <div class="cta-sub">Tell us what you need. We will review your requirement and reply from<br>sales@growzio.co.in.</div>
         </div>
-        <a href="mailto:hello@growzio.com" class="btn-dark reveal reveal-d1">Book a Free Call <i class="ti ti-arrow-right"></i></a>
+        <a href="mailto:sales@growzio.co.in?subject=Growzio%20Business%20Inquiry" class="btn-dark reveal reveal-d1">Email Sales Team <i class="ti ti-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT DETAILS -->
+  <section class="contact-section" id="contact-details">
+    <div class="w">
+      <p class="sec-tag reveal">Contact details</p>
+      <h2 class="sec-h reveal reveal-d1">Send your <span>requirement</span></h2>
+      <div class="contact-wrap">
+        <div class="contact-card reveal">
+          <div class="contact-line">
+            <i class="ti ti-mail"></i>
+            <div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:sales@growzio.co.in">sales@growzio.co.in</a></div></div>
+          </div>
+          <div class="contact-line">
+            <i class="ti ti-world"></i>
+            <div><div class="contact-label">Website</div><div class="contact-value"><a href="https://growzio.co.in">growzio.co.in</a></div></div>
+          </div>
+          <div class="contact-line">
+            <i class="ti ti-users"></i>
+            <div><div class="contact-label">Directors</div><div class="contact-value">Saravanan — Technical Director &amp; Sales &amp; Marketing<br>Javid — Director &amp; Design &amp; Development</div></div>
+          </div>
+        </div>
+        <form class="contact-form reveal reveal-d1" onsubmit="sendRequirement(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input id="name" name="name" type="text" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone / WhatsApp</label>
+              <input id="phone" name="phone" type="text" placeholder="Enter contact number">
+            </div>
+            <div class="form-group full">
+              <label for="email">Your Email</label>
+              <input id="email" name="email" type="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group full">
+              <label for="requirement">What do you want?</label>
+              <textarea id="requirement" name="requirement" placeholder="Write your requirement here..." required></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn-p">Send Requirement <i class="ti ti-send"></i></button>
+          <p class="form-note">This will open your email app and prepare a message to sales@growzio.co.in. Click Send in your email app to complete.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -870,9 +1030,11 @@
     <div class="footer-inner">
       <a href="#" class="footer-logo">Grow<em>zio</em></a>
       <div class="footer-links">
-        <a href="#">Services</a>
-        <a href="#">Work</a>
-        <a href="#">About</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact-details">Contact</a>
         <a href="#">Privacy</a>
         <a href="#">Terms</a>
       </div>
@@ -917,6 +1079,24 @@
         if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
       });
     });
+
+
+    // Contact form mail sender
+    function sendRequirement(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const requirement = document.getElementById('requirement').value.trim();
+      const subject = encodeURIComponent('New Requirement from Growzio Website');
+      const body = encodeURIComponent(
+        `Name: ${name}\n` +
+        `Phone / WhatsApp: ${phone}\n` +
+        `Email: ${email}\n\n` +
+        `Requirement:\n${requirement}`
+      );
+      window.location.href = `mailto:sales@growzio.co.in?subject=${subject}&body=${body}`;
+    }
   </script>
 </body>
 </html>
